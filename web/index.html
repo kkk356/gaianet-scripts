@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurora · 磨砂玻璃之境</title>
+  <meta name="description" content="一个具有审美排版的磨砂透明玻璃材质交互网站" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- 开场 Loading -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <p class="loader-eyebrow">Aurora · Studio</p>
+      <h1 class="loader-title" data-text="于光与雾之间"></h1>
+      <div class="loader-bar"><span></span></div>
+    </div>
+  </div>
+
+  <!-- 流动渐变背景 -->
+  <div class="bg-gradient">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+    <div class="blob blob-d"></div>
+  </div>
+
+  <!-- 噪点遮罩（增加材质感）-->
+  <div class="grain"></div>
+
+  <!-- 鼠标跟随光晕 -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- 导航 -->
+  <header class="nav glass">
+    <a class="brand" href="#">
+      <span class="brand-mark"></span>
+      <span class="brand-name">Aurora</span>
+    </a>
+    <nav class="nav-links">
+      <a href="works.html">作品</a>
+      <a href="#philosophy">理念</a>
+      <a href="#journal">手记</a>
+      <a href="#contact" class="pill">联络</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <p class="eyebrow reveal">A Glass Manifesto · 二〇二六</p>
+      <h1 class="hero-title reveal">
+        于<em>光</em>与<em>雾</em>之间<br/>
+        <span class="accent">书写温柔的界面</span>
+      </h1>
+      <p class="hero-sub reveal">
+        我们相信，好的设计应当如晨雾般轻盈，如晚霞般澄澈。
+        在这里，排版是一首诗，交互是一次呼吸。
+      </p>
+      <div class="hero-cta reveal">
+        <button class="btn btn-primary ripple">开始漫游 →</button>
+        <button class="btn btn-ghost ripple">观看短片</button>
+      </div>
+
+      <div class="hero-meta reveal">
+        <div><span class="num">04</span><span class="lbl">Chapters</span></div>
+        <div><span class="num">∞</span><span class="lbl">Possibilities</span></div>
+        <div><span class="num">01</span><span class="lbl">You</span></div>
+      </div>
+    </section>
+
+    <!-- 作品 / 卡片 -->
+    <section id="features" class="section">
+      <header class="section-head" style="display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap;">
+        <div>
+          <p class="eyebrow reveal">Chapter I</p>
+          <h2 class="reveal">三种质感，<em>一种安静</em></h2>
+        </div>
+        <a href="works.html" class="btn btn-ghost ripple reveal">查看全部作品 →</a>
+      </header>
+
+      <div class="cards">
+        <article class="card glass tilt reveal">
+          <div class="card-num">01</div>
+          <h3>晨雾 Mist</h3>
+          <p>低饱和的冷色与柔光，让视觉在清晨第一缕阳光中缓缓苏醒。</p>
+          <span class="card-tag">Cool · Serene</span>
+        </article>
+
+        <article class="card glass tilt reveal">
+          <div class="card-num">02</div>
+          <h3>暖光 Ember</h3>
+          <p>琥珀与珊瑚交织的暖色透明玻璃，像黄昏时留在窗棂上的余温。</p>
+          <span class="card-tag">Warm · Intimate</span>
+        </article>
+
+        <article class="card glass tilt reveal">
+          <div class="card-num">03</div>
+          <h3>极夜 Noctis</h3>
+          <p>深邃的靛蓝之上浮动着星尘般的高光，为深夜的专注而生。</p>
+          <span class="card-tag">Deep · Focused</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- 理念 -->
+    <section id="philosophy" class="section split">
+      <div class="split-text reveal">
+        <p class="eyebrow">Chapter II</p>
+        <h2>少即是<em>光</em>，<br/>空即是<em>境</em>。</h2>
+        <p class="lede">
+          我们删去所有不必要的装饰，让玻璃只做玻璃该做的事——
+          折射、透过、并温柔地承载信息本身。
+        </p>
+        <ul class="bullets">
+          <li><span>—</span> 以留白作为节奏的呼吸</li>
+          <li><span>—</span> 以字体作为情绪的载体</li>
+          <li><span>—</span> 以透明作为对内容的敬意</li>
+        </ul>
+      </div>
+
+      <aside class="split-card glass reveal">
+        <blockquote>
+          <p>
+            “好的界面像一扇磨砂的窗——
+            你看见的不是窗，而是窗外的光。”
+          </p>
+          <footer>— Aurora Studio</footer>
+        </blockquote>
+      </aside>
+    </section>
+
+    <!-- 手记 / 列表 -->
+    <section id="journal" class="section">
+      <header class="section-head">
+        <p class="eyebrow reveal">Chapter III</p>
+        <h2 class="reveal">最近的<em>手记</em></h2>
+      </header>
+
+      <ul class="journal">
+        <li class="glass reveal">
+          <span class="date">05 / 09</span>
+          <h4>关于玻璃的七种折光</h4>
+          <span class="arrow">↗</span>
+        </li>
+        <li class="glass reveal">
+          <span class="date">04 / 22</span>
+          <h4>衬线与无衬线的对话</h4>
+          <span class="arrow">↗</span>
+        </li>
+        <li class="glass reveal">
+          <span class="date">03 / 14</span>
+          <h4>在深色模式里寻找温度</h4>
+          <span class="arrow">↗</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- CTA -->
+    <section id="contact" class="section cta">
+      <div class="cta-box glass reveal">
+        <p class="eyebrow">Chapter IV · Stay in touch</p>
+        <h2>让下一封信，<br/>带着<em>光</em>抵达你。</h2>
+        <form class="subscribe" onsubmit="return false;">
+          <input type="email" placeholder="your@email.com" aria-label="email" />
+          <button class="btn btn-primary ripple">订阅</button>
+        </form>
+        <p class="fine">我们尊重你的宁静，随时可退订。</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <span>© 2026 Aurora Studio</span>
+    <span>Made with 雾 &amp; 光</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
