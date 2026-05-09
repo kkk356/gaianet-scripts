@@ -13,6 +13,15 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- 开场 Loading -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <p class="loader-eyebrow">Aurora · Studio</p>
+      <h1 class="loader-title" data-text="于光与雾之间"></h1>
+      <div class="loader-bar"><span></span></div>
+    </div>
+  </div>
+
   <!-- 流动渐变背景 -->
   <div class="bg-gradient">
     <div class="blob blob-a"></div>
@@ -34,7 +43,7 @@
       <span class="brand-name">Aurora</span>
     </a>
     <nav class="nav-links">
-      <a href="#features">作品</a>
+      <a href="works.html">作品</a>
       <a href="#philosophy">理念</a>
       <a href="#journal">手记</a>
       <a href="#contact" class="pill">联络</a>
@@ -67,9 +76,12 @@
 
     <!-- 作品 / 卡片 -->
     <section id="features" class="section">
-      <header class="section-head">
-        <p class="eyebrow reveal">Chapter I</p>
-        <h2 class="reveal">三种质感，<em>一种安静</em></h2>
+      <header class="section-head" style="display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap;">
+        <div>
+          <p class="eyebrow reveal">Chapter I</p>
+          <h2 class="reveal">三种质感，<em>一种安静</em></h2>
+        </div>
+        <a href="works.html" class="btn btn-ghost ripple reveal">查看全部作品 →</a>
       </header>
 
       <div class="cards">

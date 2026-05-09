@@ -430,3 +430,341 @@ h1 em, h2 em, h3 em {
   .journal li { grid-template-columns: 70px 1fr 30px; padding: 20px; }
   .cta-box { padding: 44px 28px; }
 }
+
+
+
+/* ===============================================
+   Loading · 字符逐个浮现
+   =============================================== */
+.loader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(ellipse at top left, #1a1f3a 0%, transparent 55%),
+    radial-gradient(ellipse at bottom right, #2a1530 0%, transparent 55%),
+    var(--bg);
+  backdrop-filter: blur(40px) saturate(160%);
+  -webkit-backdrop-filter: blur(40px) saturate(160%);
+  transition: opacity .9s var(--ease), visibility .9s var(--ease);
+}
+.loader.is-hidden { opacity: 0; visibility: hidden; pointer-events: none; }
+
+.loader-inner { text-align: center; padding: 0 24px; max-width: 720px; }
+
+.loader-eyebrow {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 13px;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  margin-bottom: 28px;
+  opacity: 0;
+  animation: fadeIn .8s var(--ease) .1s forwards;
+}
+
+.loader-title {
+  font-family: var(--serif-cn);
+  font-weight: 400;
+  font-size: clamp(36px, 6vw, 72px);
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  margin-bottom: 40px;
+  display: inline-flex;
+  gap: 0.04em;
+}
+.loader-title .char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(24px) rotateX(-40deg);
+  filter: blur(8px);
+  animation: charIn .9s var(--ease) forwards;
+}
+.loader-title .char.space { width: 0.4em; }
+
+@keyframes charIn {
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes fadeIn { to { opacity: 1; } }
+
+.loader-bar {
+  width: 160px;
+  height: 1px;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.12);
+  overflow: hidden;
+  opacity: 0;
+  animation: fadeIn .6s var(--ease) .3s forwards;
+}
+.loader-bar span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--accent-1), var(--accent-3), transparent);
+  transform: translateX(-100%);
+  animation: barSweep 2.2s var(--ease) infinite;
+}
+@keyframes barSweep {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ===============================================
+   Works · 作品集页
+   =============================================== */
+body.page-works { overflow-x: hidden; }
+
+.works-header {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 140px 40px 60px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: end;
+  gap: 40px;
+}
+
+.works-title {
+  font-size: clamp(40px, 6.5vw, 84px);
+  line-height: 1.12;
+  margin-top: 20px;
+  max-width: 14ch;
+}
+
+.works-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 24px;
+  padding: 8px 16px;
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  color: var(--ink-soft);
+}
+.hint-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent-1);
+  box-shadow: 0 0 12px var(--accent-1);
+  animation: pulse 1.6s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.4); }
+}
+
+.works-progress { display: flex; flex-direction: column; align-items: flex-end; gap: 10px; min-width: 220px; }
+.works-progress-track {
+  width: 200px;
+  height: 2px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 2px;
+  overflow: hidden;
+  position: relative;
+}
+.works-progress-track span {
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--accent-2), var(--accent-3), var(--accent-1));
+  transition: width .4s var(--ease);
+  border-radius: 2px;
+}
+.works-progress-count {
+  font-family: var(--serif-en);
+  font-size: 15px;
+  letter-spacing: 0.2em;
+  color: var(--ink-soft);
+}
+.works-progress-count .slash { margin: 0 6px; color: var(--ink-mute); }
+
+/* 画廊容器 */
+.gallery {
+  position: relative;
+  padding: 40px 0 100px;
+  overflow: hidden;
+  cursor: grab;
+}
+.gallery.is-grabbing { cursor: grabbing; }
+
+.gallery-track {
+  display: flex;
+  gap: 32px;
+  padding: 40px 8vw;
+  will-change: transform;
+  transition: transform .8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.work {
+  flex: 0 0 auto;
+  width: min(680px, 82vw);
+  height: 72vh;
+  min-height: 520px;
+  max-height: 720px;
+}
+
+.work-card {
+  width: 100%; height: 100%;
+  display: grid;
+  grid-template-rows: 58% 1fr;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  transform: translateY(0);
+  transition: transform .6s var(--ease), box-shadow .6s var(--ease);
+}
+
+.work:hover .work-card {
+  transform: translateY(-6px);
+  box-shadow:
+    0 1px 0 var(--glass-hi) inset,
+    0 60px 100px -30px rgba(0,0,0,0.8);
+}
+
+/* 视觉块 */
+.work-visual {
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--glass-border);
+  background:
+    radial-gradient(circle at 30% 20%, var(--g1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, var(--g2) 0%, transparent 55%),
+    var(--g3);
+}
+.work-visual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255,255,255,0.08), transparent 40%);
+  pointer-events: none;
+}
+.work-visual-shape {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(30px);
+  opacity: 0.7;
+  mix-blend-mode: screen;
+}
+.work-visual-shape.s-1 { width: 220px; height: 220px; background: #fff; top: -40px; right: -40px; }
+.work-visual-shape.s-2 { width: 180px; height: 180px; background: var(--g1); bottom: -30px; left: 20%; }
+.work-visual-shape.s-3 { width: 260px; height: 260px; background: var(--g2); top: 30%; left: -60px; }
+
+/* 文案区 */
+.work-body {
+  padding: 30px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.work-meta {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-mute);
+  letter-spacing: 0.08em;
+  margin-bottom: 4px;
+}
+.work-name {
+  font-family: var(--serif-cn);
+  font-weight: 400;
+  font-size: clamp(26px, 2.6vw, 34px);
+  line-height: 1.2;
+}
+.work-subtitle {
+  font-family: var(--serif-en);
+  font-style: italic;
+  font-size: 15px;
+  color: var(--accent-1);
+  margin-bottom: 8px;
+}
+.work-desc {
+  font-family: var(--serif-cn);
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.85;
+  font-size: 15px;
+  flex: 1;
+}
+.work-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 12px;
+}
+.work-tags span {
+  padding: 6px 12px;
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  border: 1px solid var(--glass-border);
+  border-radius: 999px;
+  background: rgba(255,255,255,0.04);
+}
+
+/* 终页 */
+.work-end { width: min(560px, 82vw); }
+.work-end-inner {
+  height: 100%;
+  padding: 60px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 20px;
+}
+.work-end-inner h2 {
+  font-size: clamp(30px, 3.8vw, 44px);
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+
+/* 画廊控制 */
+.gallery-controls {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 10px 18px;
+  border-radius: 999px;
+  z-index: 40;
+}
+.ctrl {
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  border: 1px solid var(--glass-border);
+  background: rgba(255,255,255,0.06);
+  color: var(--ink);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background .3s var(--ease), transform .3s var(--ease);
+}
+.ctrl:hover { background: rgba(255,255,255,0.16); transform: scale(1.06); }
+.ctrl-hint {
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+}
+
+/* 响应式 */
+@media (max-width: 900px) {
+  .works-header { grid-template-columns: 1fr; }
+  .works-progress { align-items: flex-start; width: 100%; }
+  .works-progress-track { width: 100%; }
+  .work { width: 86vw; height: 70vh; min-height: 480px; }
+  .work-card { grid-template-rows: 50% 1fr; }
+  .work-body { padding: 22px 24px 26px; }
+  .gallery-track { padding: 20px 7vw; gap: 20px; }
+}

@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurora · 作品集</title>
+  <meta name="description" content="Aurora 工作室作品集 — 磨砂玻璃横向画廊" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&family=Noto+Serif+SC:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="page-works">
+
+  <!-- 开场 Loading -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-inner">
+      <p class="loader-eyebrow">Aurora · 作品集</p>
+      <h1 class="loader-title" data-text="在光与雾之间"></h1>
+      <div class="loader-bar"><span></span></div>
+    </div>
+  </div>
+
+  <!-- 背景 -->
+  <div class="bg-gradient">
+    <div class="blob blob-a"></div>
+    <div class="blob blob-b"></div>
+    <div class="blob blob-c"></div>
+    <div class="blob blob-d"></div>
+  </div>
+  <div class="grain"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- 导航 -->
+  <header class="nav glass">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"></span>
+      <span class="brand-name">Aurora</span>
+    </a>
+    <nav class="nav-links">
+      <a href="index.html#features">作品</a>
+      <a href="index.html#philosophy">理念</a>
+      <a href="index.html#journal">手记</a>
+      <a href="index.html" class="pill">返回首页</a>
+    </nav>
+  </header>
+
+  <!-- 作品集头部 -->
+  <section class="works-header">
+    <div class="works-header-inner">
+      <p class="eyebrow">Selected Works · 二〇二〇 — 二〇二六</p>
+      <h1 class="works-title">
+        六件<em>作品</em>，<br/>
+        <span class="accent">六种光的折射</span>
+      </h1>
+      <div class="works-hint">
+        <span class="hint-dot"></span>
+        <span>横向滚动 · 滚轮或拖动</span>
+      </div>
+    </div>
+
+    <!-- 进度指示 -->
+    <div class="works-progress">
+      <div class="works-progress-track"><span id="progressFill"></span></div>
+      <div class="works-progress-count">
+        <span id="progressCurrent">01</span>
+        <span class="slash">/</span>
+        <span id="progressTotal">06</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 横向画廊 -->
+  <section class="gallery" id="gallery" aria-label="作品横向画廊">
+    <div class="gallery-track" id="galleryTrack">
+
+      <!-- 01 -->
+      <article class="work" data-index="1">
+        <div class="work-card glass">
+          <div class="work-visual" style="--g1:#ffb6c1; --g2:#ffd8a8; --g3:#ffffff;">
+            <div class="work-visual-shape s-1"></div>
+            <div class="work-visual-shape s-2"></div>
+          </div>
+          <div class="work-body">
+            <div class="work-meta">
+              <span class="work-year">2026</span>
+              <span class="work-kind">Web · Interactive</span>
+            </div>
+            <h2 class="work-name">晨雾会客厅</h2>
+            <p class="work-subtitle">Morning Mist Lounge</p>
+            <p class="work-desc">
+              一间数字会客厅，以低饱和的晨雾色与细腻磨砂玻璃，
+              承载轻盈的阅读与对话。
+            </p>
+            <div class="work-tags">
+              <span>Glassmorphism</span>
+              <span>Reading</span>
+              <span>Soft UI</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 02 -->
+      <article class="work" data-index="2">
+        <div class="work-card glass">
+          <div class="work-visual" style="--g1:#b8c5ff; --g2:#8aa8ff; --g3:#1a1f3a;">
+            <div class="work-visual-shape s-1"></div>
+            <div class="work-visual-shape s-3"></div>
+          </div>
+          <div class="work-body">
+            <div class="work-meta">
+              <span class="work-year">2025</span>
+              <span class="work-kind">Brand · Identity</span>
+            </div>
+            <h2 class="work-name">蓝时信笺</h2>
+            <p class="work-subtitle">Bluehour Letters</p>
+            <p class="work-desc">
+              为独立出版品牌打造的视觉系统，
+              取黄昏与深夜之间的蓝作为整套语言的基调。
+            </p>
+            <div class="work-tags">
+              <span>Identity</span>
+              <span>Editorial</span>
+              <span>Bluehour</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 03 -->
+      <article class="work" data-index="3">
+        <div class="work-card glass">
+          <div class="work-visual" style="--g1:#e7a7ff; --g2:#ffcf8a; --g3:#2a1530;">
+            <div class="work-visual-shape s-2"></div>
+            <div class="work-visual-shape s-3"></div>
+          </div>
+          <div class="work-body">
+            <div class="work-meta">
+              <span class="work-year">2025</span>
+              <span class="work-kind">App · Meditation</span>
+            </div>
+            <h2 class="work-name">静夜呼吸</h2>
+            <p class="work-subtitle">Noctis Breathing</p>
+            <p class="work-desc">
+              一款冥想应用，用环形玻璃光晕与缓慢的呼吸节奏，
+              让用户在深夜里慢下来。
+            </p>
+            <div class="work-tags">
+              <span>Mindfulness</span>
+              <span>Sound</span>
+              <span>Motion</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 04 -->
+      <article class="work" data-index="4">
+        <div class="work-card glass">
+          <div class="work-visual" style="--g1:#ffcf8a; --g2:#ff8ab8; --g3:#3d1e2a;">
+            <div class="work-visual-shape s-1"></div>
+            <div class="work-visual-shape s-2"></div>
+          </div>
+          <div class="work-body">
+            <div class="work-meta">
+              <span class="work-year">2024</span>
+              <span class="work-kind">Exhibition · Spatial</span>
+            </div>
+            <h2 class="work-name">余温展</h2>
+            <p class="work-subtitle">Ember Exhibition</p>
+            <p class="work-desc">
+              一场关于"黄昏记忆"的线下展览，
+              以琥珀色磨砂屏风与投影交织出温柔的叙事。
+            </p>
+            <div class="work-tags">
+              <span>Exhibition</span>
+              <span>Lighting</span>
+              <span>Narrative</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 05 -->
+      <article class="work" data-index="5">
+        <div class="work-card glass">
+          <div class="work-visual" style="--g1:#a8f0d8; --g2:#8ac5ff; --g3:#0b2028;">
+            <div class="work-visual-shape s-2"></div>
+            <div class="work-visual-shape s-3"></div>
+          </div>
+          <div class="work-body">
+            <div class="work-meta">
+              <span class="work-year">2023</span>
+              <span class="work-kind">Product · Dashboard</span>
+            </div>
+            <h2 class="work-name">潮汐仪表</h2>
+            <p class="work-subtitle">Tide Console</p>
+            <p class="work-desc">
+              数据如潮汐般起落，我们以分层玻璃卡片与柔和色阶，
+              让复杂的信息也显得可亲。
+            </p>
+            <div class="work-tags">
+              <span>Dashboard</span>
+              <span>Data Viz</span>
+              <span>Enterprise</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 06 -->
+      <article class="work" data-index="6">
+        <div class="work-card glass">
+          <div class="work-visual" style="--g1:#ffffff; --g2:#d0d8ff; --g3:#141421;">
+            <div class="work-visual-shape s-1"></div>
+            <div class="work-visual-shape s-3"></div>
+          </div>
+          <div class="work-body">
+            <div class="work-meta">
+              <span class="work-year">2022</span>
+              <span class="work-kind">Typography · Book</span>
+            </div>
+            <h2 class="work-name">字的呼吸</h2>
+            <p class="work-subtitle">Breath of Type</p>
+            <p class="work-desc">
+              一本关于中文排版节奏的小书，
+              用大面积留白，把阅读变成一次温柔的呼吸。
+            </p>
+            <div class="work-tags">
+              <span>Typography</span>
+              <span>Print</span>
+              <span>Editorial</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 终页 -->
+      <article class="work work-end" data-index="7">
+        <div class="work-end-inner glass">
+          <p class="eyebrow">Fin.</p>
+          <h2>下一件作品<br/><em>或许是</em>你的。</h2>
+          <a href="index.html#contact" class="btn btn-primary ripple">开始合作 →</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 底部控制 -->
+  <div class="gallery-controls glass">
+    <button class="ctrl" id="btnPrev" aria-label="上一件">←</button>
+    <span class="ctrl-hint">拖动 · 滚轮 · 方向键</span>
+    <button class="ctrl" id="btnNext" aria-label="下一件">→</button>
+  </div>
+
+  <footer class="footer">
+    <span>© 2026 Aurora Studio</span>
+    <span>Made with 雾 &amp; 光</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
